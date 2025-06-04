@@ -53,6 +53,19 @@
       margin: 0 auto;
       color: #ccc;
     }
+    .section {
+      padding: 60px 20px;
+      max-width: 960px;
+      margin: auto;
+    }
+    .section h2 {
+      color: #00bcd4;
+      margin-bottom: 20px;
+    }
+    .section p {
+      color: #ccc;
+      line-height: 1.6;
+    }
     footer {
       background-color: #111;
       color: #666;
@@ -68,16 +81,31 @@
     <div class="logo">Tixos</div>
     <nav>
       <a href="#">Home</a>
-      <a href="#">Downloads</a>
-      <a href="#">Features</a>
-      <a href="#">Devices</a>
-      <a href="#">GitHub</a>
+      <a href="#features">Features</a>
+      <a href="#devices">Devices</a>
+      <a href="#downloads">Downloads</a>
+      <a href="https://github.com/tixos" target="_blank">GitHub</a>
     </nav>
   </header>
 
   <section class="hero">
     <h1>Your Device, Your Rules</h1>
     <p>An open, minimal, Arch-style mobile OS built for those who want complete control.</p>
+  </section>
+
+  <section class="section" id="features">
+    <h2>Features</h2>
+    <p>Tixos is crafted to be minimal and blazing fast. Root access by default, systemd-powered init, full ADB control, and no bloat. It's not just a ROM, it's a philosophy.</p>
+  </section>
+
+  <section class="section" id="devices">
+    <h2>Supported Devices</h2>
+    <p>We currently support a growing list of devices including the Samsung Galaxy Tab A9+ (SM-X210), Note 4 (SM-N910C), and more coming soon.</p>
+  </section>
+
+  <section class="section" id="downloads">
+    <h2>Downloads</h2>
+    <p>Visit our <a href="https://github.com/tixos/roms" target="_blank">GitHub Releases</a> page to download the latest recovery images and system builds.</p>
   </section>
 
   <footer>
