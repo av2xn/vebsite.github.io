@@ -3,37 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tixos - Your Device, Your Rules</title>
+  <title>Tixos</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    html {
+      scroll-behavior: smooth;
+    }
+    :root {
+      --bg-color: #0e0e0e;
+      --text-color: #ffffff;
+      --secondary-color: #1a1a1a;
+      --border-color: #2a2a2a;
+      --card-color: #1a1a1a;
+      --button-bg: #ffffff;
+      --button-text: #000000;
+    }
+    body.light {
+      --bg-color: #f0f0f0;
+      --text-color: #000000;
+      --secondary-color: #ffffff;
+      --border-color: #cccccc;
+      --card-color: #ffffff;
+      --button-bg: #000000;
+      --button-text: #ffffff;
     }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #0e0e0e;
-      color: #ffffff;
-      font-size: 18px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding-top: 120px;
+      transition: background 0.3s, color 0.3s;
     }
     header {
-      background-color: #1a1a1a;
-      padding: 40px 40px;
+      position: fixed;
+      top: 20px;
+      left: 0;
+      right: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #2a2a2a;
+      padding: 0 40px;
+      z-index: 1000;
+    }
+    .nav-box, .logo-box, .toggle-box {
+      background-color: var(--secondary-color);
+      padding: 12px 24px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     }
     .logo {
-      font-size: 28px;
+      font-size: 18px;
       font-weight: bold;
-      color: #ffffff;
+      color: var(--text-color);
     }
     nav a {
-      color: #ffffff;
+      color: var(--text-color);
       text-decoration: none;
-      margin-left: 30px;
+      margin: 0 12px;
       font-weight: 500;
       opacity: 0.8;
       transition: 0.3s;
@@ -41,91 +70,155 @@
     nav a:hover {
       opacity: 1;
     }
-    .hero {
-      padding: 120px 20px;
-      text-align: center;
-      background: linear-gradient(to right, #111, #151515);
-    }
-    .hero h1 {
-      font-size: 40px;
-      margin-bottom: 20px;
-      color: #ffffff;
-      font-weight: 700;
-    }
-    .hero p {
-      font-size: 22px;
-      max-width: 600px;
-      margin: 0 auto 30px auto;
-      color: #cccccc;
-      font-weight: 400;
-    }
-    .hero a.button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 12px 24px;
-      background-color: #ffffff;
-      color: #000000;
-      text-decoration: none;
-      border-radius: 5px;
+    .toggle-btn {
+      background: none;
+      color: var(--text-color);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      cursor: pointer;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 14px;
+      transition: 0.3s;
     }
-    .hero a.button:hover {
-      background-color: #e0e0e0;
+    .toggle-btn:hover {
+      opacity: 0.8;
     }
-    .section {
+    .container {
       max-width: 960px;
-      margin: 80px auto;
+      margin: 0 auto;
       padding: 0 20px;
       text-align: center;
     }
-    .section h2 {
-      font-size: 32px;
-      margin-bottom: 20px;
+    h1 {
+      font-size: 40px;
+      margin: 40px 0 20px;
     }
-    .section p {
+    p {
       font-size: 18px;
-      color: #cccccc;
-      line-height: 1.6;
+      margin-bottom: 40px;
+      color: #aaa;
+    }
+    .cta-button {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    .cta-button:hover {
+      opacity: 0.9;
+    }
+    .features-section {
+      margin: 100px 0;
+    }
+    .features-section h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 40px 40px;
+      text-align: center;
+      justify-items: center;
+    }
+    .feature {
+      background-color: var(--card-color);
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      width: 100%;
+      max-width: 440px;
+      box-sizing: border-box;
+    }
+    .feature h3 {
+      margin: 0 0 15px 0;
+      font-size: 24px;
+      color: var(--text-color);
+    }
+    .feature p {
+      font-size: 16px;
+      color: #aaa;
+      margin: 0;
     }
     footer {
-      background-color: #111;
+      background-color: var(--secondary-color);
       color: #666;
       padding: 20px;
       text-align: center;
       font-size: 14px;
-      border-top: 1px solid #222;
+      border-top: 1px solid var(--border-color);
+      margin-top: 80px;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">Tixos</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="downloads.html">Downloads</a>
-      <a href="https://github.com/TixOS-Project" target="_blank">GitHub</a>
-    </nav>
+    <div class="logo-box">
+      <span class="logo">Tixos</span>
+    </div>
+    <div class="nav-box">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="downloads.html">Downloads</a>
+        <a href="https://github.com/TixOS-Project" target="_blank">GitHub</a>
+      </nav>
+    </div>
+    <div class="toggle-box">
+      <button class="toggle-btn" id="modeToggle" onclick="toggleTheme()">Light Mode</button>
+    </div>
   </header>
 
-  <section class="hero">
+  <div class="container">
     <h1>Your Device, Your Rules</h1>
     <p>An open, minimal, Arch-style mobile OS built for those who want complete control.</p>
-    <a class="button" href="downloads.html">Download for my device</a>
-  </section>
+    <a class="cta-button" href="downloads.html">Download for my device</a>
 
-  <section class="section">
-    <h2>Why Tixos?</h2>
-    <p>Tixos is a lightweight, bloat-free mobile OS for people who want root access, ADB power, and no unnecessary services or trackers. Inspired by the philosophy of Arch Linux, it lets you control your device like never before.</p>
-  </section>
-
-  <section class="section">
-    <h2>Features</h2>
-    <p>• Root by default<br>• Full ADB shell access<br>• systemd init<br>• Pixel-perfect performance<br>• GUI-free base system<br>• Easy to build and customize<br>• Open Source and Community Maintained</p>
-  </section>
+    <div class="features-section">
+      <h2>Features</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <h3>Systemd Init</h3>
+          <p>Runs on a fully systemd-powered init system, just like desktop Linux.</p>
+        </div>
+        <div class="feature">
+          <h3>ADB-First</h3>
+          <p>ADB access enabled by default — power users take control from the start.</p>
+        </div>
+        <div class="feature">
+          <h3>No Bloatware</h3>
+          <p>Ships clean. No preinstalled apps, just the core essentials.</p>
+        </div>
+        <div class="feature">
+          <h3>Super Fast</h3>
+          <p>Designed to be lightning fast, minimal and resource-friendly.</p>
+        </div>
+        <div class="feature">
+          <h3>Open Source</h3>
+          <p>Completely open and community-driven. Fork it, build it, tweak it.</p>
+        </div>
+        <div class="feature">
+          <h3>Customizable</h3>
+          <p>Your ROM, your rules. Configure everything via ADB and shell tools.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
-    &copy; 2025 Tixos Project — Open Source & av2xn & Community Driven
+    &copy; 2025 Tixos Project — Open Source & Community Driven
   </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+      const isLight = document.body.classList.contains("light");
+      document.getElementById("modeToggle").innerText = isLight ? "Dark Mode" : "Light Mode";
+    }
+  </script>
 </body>
 </html>
